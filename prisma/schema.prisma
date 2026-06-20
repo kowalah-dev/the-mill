@@ -1,0 +1,56 @@
+// The Mill — Prisma schema
+//
+// SQLite, file-based, no server. The database lives in prisma/dev.db and is
+// created/reset with `npx prisma db push`. Regenerate the TypeScript client
+// with `npx prisma generate` (db push does this automatically).
+//
+// Two SQLite notes worth knowing:
+//   1. SQLite has no native enums, so status/type are String columns. The
+//      allowed values are the union types in lib/types.ts — use those, not
+//      raw strings, in application code.
+//   2. Money is stored as Float for simplicity (clean JSON, easy assertions).
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  // Hardcoded on purpose: no .env file required for local training use.
+  url      = "file:./dev.db"
+}
+
+model Room {
+  id            Int       @id @default(autoincrement())
+  number        String    @unique // e.g. "101" or "Mill Suite"
+  type          String // SINGLE | DOUBLE | SUITE  (see RoomType in lib/types.ts)
+  floor         Int
+  status        String // AVAILABLE | OCCUPIED | MAINTENANCE | RESERVED  (see RoomStatus)
+  pricePerNight Float
+  description   String // short, flavourful — e.g. "South-facing, overlooking the millpond"
+  bookings      Booking[]
+}
+
+model Guest {
+  id        Int       @id @default(autoincrement())
+  name      String
+  email     String    @unique
+  phone     String?
+  createdAt DateTime  @default(now())
+  bookings  Booking[]
+}
+
+model Booking {
+  id          Int      @id @default(autoincrement())
+  guestId     Int
+  guest       Guest    @relation(fields: [guestId], references: [id])
+  roomId      Int
+  room        Room     @relation(fields: [roomId], references: [id])
+  checkIn     DateTime
+  checkOut    DateTime
+  status      String // PENDING | CONFIRMED | CHECKED_IN | CHECKED_OUT | CANCELLED  (see BookingStatus)
+  totalAmount Float
+  notes       String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}

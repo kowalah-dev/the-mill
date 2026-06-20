@@ -1,36 +1,132 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# The Mill — Booking System
 
-## Getting Started
+A lightweight hotel booking engine for **The Mill**, a retreat venue in
+Northamptonshire run by its proprietor, Dom Kell. This repository is the
+training environment for **Kowalah's T-series** (Claude for Technical Teams).
+You'll work in it to learn **Claude Code** at progressively deeper levels
+(T1 → T2 → T3).
 
-First, run the development server:
+> **Two ways to follow this guide:**
+> - **Newer to development?** Use the **Claude Code Desktop** app and let Claude
+>   run the setup for you — you barely need a terminal. Follow the steps below;
+>   where a command appears, you can simply ask Claude to do it.
+> - **Comfortable in a terminal or VS Code?** The commands are all here — clone,
+>   install, run. Skip straight to the code blocks.
+
+---
+
+## Before you begin
+
+You need three things installed once. Each links to a simple installer:
+
+1. **Node.js** (version 20 or newer) — the runtime the app uses.
+   Download the "LTS" version from <https://nodejs.org>.
+2. **Git** — to download the code. <https://git-scm.com/downloads>
+   (Or skip Git entirely — see Step 1.)
+3. **Claude Code** — the tool you're here to learn.
+   Get the desktop app or the terminal install from
+   <https://claude.com/claude-code>.
+
+> Not sure if you have Node or Git already? Open Claude Code (Step 2) and ask:
+> *"Do I have Node.js and Git installed, and what versions?"* — it'll check for you.
+
+---
+
+## Step 1 — Get the code onto your computer
+
+**With Git** (terminal or VS Code):
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone https://github.com/kowalah/the-mill
+cd the-mill
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+**Without Git** (simplest for first-timers): on the GitHub page, click the green
+**Code** button → **Download ZIP**, then unzip it somewhere you'll find again
+(e.g. your Documents folder).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Step 2 — Open it in Claude Code
 
-## Learn More
+Pick whichever matches how you like to work:
 
-To learn more about Next.js, take a look at the following resources:
+- **Claude Code Desktop** (great if you're newer): open the app, choose
+  **Open Project** (or **Open Folder**), and select the `the-mill` folder.
+- **Terminal**: `cd` into the `the-mill` folder and run `claude`.
+- **VS Code / JetBrains**: open the `the-mill` folder, then open the Claude Code
+  panel/extension.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+All three give you the same Claude Code — the difference is just where it lives.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+---
 
-## Deploy on Vercel
+## Step 3 — Set up and run the app
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+You can run these four commands yourself in the terminal:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```bash
+npm install                          # install dependencies
+npx prisma db push && npx prisma db seed   # create and fill the database
+npm run dev                          # start the app
+```
+
+**Or just ask Claude to do it.** In your Claude Code session, type:
+
+> *"Set this project up and start it: install dependencies, set up the database,
+> and run the dev server."*
+
+Either way, the app starts and prints a local URL (usually
+<http://localhost:3000>). Open it in your browser — you'll see the dashboard,
+bookings, rooms and guests, already full of sample data. No accounts, no API
+keys, no `.env` file: the database is a single SQLite file at `prisma/dev.db`.
+
+---
+
+## Step 4 — Run `/start-here`
+
+In Claude Code, type **`/start-here`**. It's your course concierge — a welcome,
+the scenario, what to try in your first five minutes, and the exercise guide for
+your level (T1, T2 or T3). Start there.
+
+---
+
+## What's in here
+
+| Path | What it is |
+|------|------------|
+| `app/` | Dashboard, bookings, rooms and guests pages (React Server Components) |
+| `app/api/` | JSON API — the programmatic entry points for loops and agents |
+| `prisma/` | `schema.prisma` (data model) and `seed.ts` (20 rooms, 15 guests, 30 bookings) |
+| `lib/` | Prisma client (`db.ts`), shared types (`types.ts`), formatters (`format.ts`) |
+| `components/` | UI components, including shadcn/ui primitives in `components/ui/` |
+| `__tests__/` | Vitest suite — the verification gate for the T2 loop |
+| `CLAUDE.md` | Pre-built project context — read it as a worked example in T1 |
+| `.claude/skills/start-here/` | **Run `/start-here` first** — the course concierge and T1/T2/T3 exercise guides |
+| `.claude/` | `agents/` and `rules/` are empty, ready for exercises; `loop.md` scaffolds the T2 loop |
+| `docs/` | `checkout-flow.md` — a stub you'll fill in during T1 |
+| `STATE.md` | Loop state, written by the T2 nightly confirmation loop |
+
+## Common commands
+
+```bash
+npm run dev        # start the app
+npm test           # run the Vitest suite
+npm run db:reset   # wipe and reseed the database
+npm run build      # production build
+```
+
+(Don't remember these? Just ask Claude — *"how do I reset the database?"*)
+
+## The three workflows the system models
+
+1. **Booking** — a guest searches availability, picks a room, makes a reservation.
+2. **Check-in** — a guest arrives, the room is assigned, status updates to occupied.
+3. **Check-out** — a guest leaves, payment is finalised, the room resets.
+
+## Note for participants
+
+Some things in this repo are intentionally incomplete — missing edge-case tests,
+a stub `docs/checkout-flow.md`, empty `.claude/agents/` and `.claude/rules/`.
+**These are the exercises**, not bugs. Run `/start-here` (or your facilitator
+will tell you which to tackle).
