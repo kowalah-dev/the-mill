@@ -37,7 +37,7 @@ You need three things installed once. Each links to a simple installer:
 **With Git** (terminal or VS Code):
 
 ```bash
-git clone https://github.com/kowalah/the-mill
+git clone https://github.com/kowalah-dev/the-mill
 cd the-mill
 ```
 
