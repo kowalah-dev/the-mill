@@ -60,6 +60,22 @@ Then watch it: leave a review comment on the PR (or let a review bot do it) and
 the next tick will read it, triage it, and either fix-and-push or defer it with a
 one-line reason. When the PR goes green, the loop stops itself.
 
+### Where the review comments come from
+
+Babysit acts on PR review comments, so you need something posting them. From
+least to most setup:
+
+1. **You, or `/code-review --comment`** — leave a review comment by hand, or run
+   `/code-review --comment` in a Claude Code session to post findings onto the PR.
+   Zero GitHub setup; enough to exercise the loop.
+2. **The Claude GitHub app** (`@claude` mentions) — run `/install-github-app` in
+   Claude Code (you must be a repo admin), or follow the
+   [GitHub Actions docs](https://code.claude.com/docs/en/github-actions).
+3. **Claude Code Review** — automatic inline review on every PR, no trigger
+   needed: [setup docs](https://code.claude.com/docs/en/code-review). This is the
+   ideal feed for babysit, but it's a research-preview Team/Enterprise feature an
+   admin enables for the org — so it may not be available on a personal repo.
+
 ## Make it your own
 
 Two natural extensions for the T2 "harden" tier:

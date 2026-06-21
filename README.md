@@ -60,10 +60,22 @@ cd the-mill
    git clone https://github.com/<your-username>/the-mill
    cd the-mill
    ```
-3. For babysit's review loop to actually do something, install a PR review bot on
-   your repo — e.g. the **Claude GitHub app** (<https://github.com/apps/claude>).
-   Without a bot leaving review comments, `/babysit` will run but find nothing to
-   act on.
+3. **Give `/babysit` something to read.** It acts on PR *review comments*, so it
+   needs comments on the PR. Three ways, simplest first:
+   - **No setup** — leave a review comment yourself, or run **`/code-review --comment`**
+     in a Claude Code session to post findings straight onto your PR.
+   - **The Claude GitHub app** (`@claude` mentions) — run **`/install-github-app`**
+     in Claude Code, or follow the
+     [GitHub Actions setup docs](https://code.claude.com/docs/en/github-actions).
+     You must be a repo admin.
+   - **Automatic review on every PR** — Claude Code Review
+     ([setup docs](https://code.claude.com/docs/en/code-review)) posts inline
+     findings without a trigger. Best experience, but it's a Team/Enterprise
+     feature an admin enables for the org, so it may not be available on a
+     personal repo.
+
+   Without any comments to act on, `/babysit` still runs — it just reports that
+   there's nothing to do.
 
 > Prefer to **fork** instead? That works too, but `gh pr create` from a fork
 > defaults to opening the PR against *this* upstream repo — run
