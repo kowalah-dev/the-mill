@@ -34,11 +34,25 @@ Code session to see what's available; these are the ones that matter most here.
 | `/permissions` | Manage tool-access rules. |
 | `/plugin` | Find, install and manage plugins (see [plugins.md](plugins.md)). |
 
+**The three verbs — get these right:**
+
+| Verb | Keep working… | Command |
+|------|---------------|---------|
+| **Goal** | until the outcome is achieved, then stop | `/goal <condition>` |
+| **Loop** | while I'm *here* (on a timer) | `/loop <interval> <prompt>` |
+| **Routine** | while I'm *gone* (in the cloud) | `/schedule <description>` |
+
+The trap: **there is no `/routine` command.** The "while I'm gone" scheduler is
+`/schedule`, and its cloud runs are called *Routines*.
+
 **`/loop` vs `/goal`:** reach for `/loop` when you want a check *on a timer*
 regardless of state (polling a deploy, babysitting a PR); reach for `/goal` when
 there's a crisp, verifiable finish line and you want hands-off work *until it's
 proven done*. The nightly confirmation loop can use either — `/loop` for a
 recurring nightly run, `/goal` to drain the pending queue in one sitting.
+
+For copy-pasteable examples of all three, adapted to The Mill, see the
+[loop library](loop-examples.md).
 
 **Where automations run** (covered in `/powerup`): session-scoped `/loop` (needs
 the session open; expires after 7 days), **Desktop scheduled tasks** (run on your

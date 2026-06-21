@@ -81,5 +81,5 @@ Two SQLite specifics to know:
 - Do not connect a cloud database — SQLite only for training use.
 - Do not "fix" the intentional gaps (missing edge-case tests, the stub docs,
   the empty `.claude/agents/` and `.claude/rules/`) — they are the exercises.
-  (`.claude/skills/` holds the `start-here` course guide; building your *own*
-  skill is still the T1 exercise.)
+  (`.claude/skills/` holds the `start-here` course guide and a `babysit`
+  worked-example skill; building your *own* skill is still the T1 exercise.)

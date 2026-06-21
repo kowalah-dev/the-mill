@@ -65,6 +65,10 @@ swarm. The Mill gives you all four:
    Use **`/goal`** when you want it to run *until a verified condition holds*
    rather than on a fixed beat — see
    [`../reference/claude-code-features.md`](../reference/claude-code-features.md).
+   For copy-pasteable, Mill-flavoured examples of all three verbs (`/goal`,
+   `/loop`, `/schedule`) — including the confirmation queue as a capped goal and
+   the shipped `/babysit` loop — see the
+   [loop library](../reference/loop-examples.md).
 4. **Add the gate.** Each run ends by running `npm test`; it only reports
    success if the suite is green. Append a run summary to `STATE.md` (timestamp,
    #confirmed, #flagged and why) — tomorrow's run *resumes* instead of restarting.

@@ -69,5 +69,7 @@ When you need to look something up, these are in [`reference/`](reference/):
 ## A note on this skill
 
 This `start-here` skill is your **course concierge** — it orients you and points
-you around. Everything else under `.claude/` (your own skills, sub-agents,
-rules, the loop) is **empty on purpose** — building those is the training.
+you around. The repo also ships one worked-example skill, **`/babysit`** (a
+PR-shepherding loop — see [`reference/babysit-example.md`](reference/babysit-example.md)).
+Everything else under `.claude/` (your own skills, sub-agents, rules) is **empty
+on purpose** — building those is the training.

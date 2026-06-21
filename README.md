@@ -34,16 +34,53 @@ You need three things installed once. Each links to a simple installer:
 
 ## Step 1 — Get the code onto your computer
 
-**With Git** (terminal or VS Code):
+Pick the path that matches what you'll do. Most of the course (T1, and the local
+T2 loop) runs entirely on your machine — **you only need your own GitHub copy if
+you want to open pull requests** and try the `/babysit` exercise.
+
+**A. Just exploring, or doing T1 / the local T2 loop** — clone or download:
 
 ```bash
 git clone https://github.com/kowalah-dev/the-mill
 cd the-mill
 ```
 
-**Without Git** (simplest for first-timers): on the GitHub page, click the green
+*Without Git (simplest for first-timers):* on the GitHub page, click the green
 **Code** button → **Download ZIP**, then unzip it somewhere you'll find again
 (e.g. your Documents folder).
+
+**B. Want to open PRs and try `/babysit`** — make your *own* copy first:
+
+1. On the [repo page](https://github.com/kowalah-dev/the-mill), click
+   **Use this template → Create a new repository**. This gives you an
+   independent repo you fully own (cleaner than a fork — `gh pr create` targets
+   *your* repo by default, and you can add a review bot to it).
+2. Clone *your* new repo:
+   ```bash
+   git clone https://github.com/<your-username>/the-mill
+   cd the-mill
+   ```
+3. **Give `/babysit` something to read.** It acts on PR *review comments*, so it
+   needs comments on the PR. Three ways, simplest first:
+   - **No setup** — leave a review comment yourself, or run **`/code-review --comment`**
+     in a Claude Code session to post findings straight onto your PR.
+   - **The Claude GitHub app** (`@claude` mentions) — run **`/install-github-app`**
+     in Claude Code, or follow the
+     [GitHub Actions setup docs](https://code.claude.com/docs/en/github-actions).
+     You must be a repo admin.
+   - **Automatic review on every PR** — Claude Code Review
+     ([setup docs](https://code.claude.com/docs/en/code-review)) posts inline
+     findings without a trigger. Best experience, but it's a Team/Enterprise
+     feature an admin enables for the org, so it may not be available on a
+     personal repo.
+
+   Without any comments to act on, `/babysit` still runs — it just reports that
+   there's nothing to do.
+
+> Prefer to **fork** instead? That works too, but `gh pr create` from a fork
+> defaults to opening the PR against *this* upstream repo — run
+> `gh repo set-default <your-fork>` first so your PRs land on your own copy, and
+> install the review bot on the fork.
 
 ---
 
@@ -103,6 +140,7 @@ your level (T1, T2 or T3). Start there.
 | `__tests__/` | Vitest suite — the verification gate for the T2 loop |
 | `CLAUDE.md` | Pre-built project context — read it as a worked example in T1 |
 | `.claude/skills/start-here/` | **Run `/start-here` first** — the course concierge and T1/T2/T3 exercise guides |
+| `.claude/skills/babysit/` | A worked-example `/loop` skill (PR shepherd) — study it for T2; see `start-here/reference/babysit-example.md` |
 | `.claude/` | `agents/` and `rules/` are empty, ready for exercises; `loop.md` scaffolds the T2 loop |
 | `docs/` | `checkout-flow.md` — a stub you'll fill in during T1 |
 | `STATE.md` | Loop state, written by the T2 nightly confirmation loop |
