@@ -1,7 +1,9 @@
 # Skills
 
-This directory is intentionally empty. It's where you'll add **skills** during
-the T1 "Skills, Plugins & Artifacts" exercise.
+This directory ships two skills: **`start-here`** (the course concierge) and
+**`babysit`** (a worked example of a PR-shepherding `/loop` — study it, don't
+treat it as the answer). Building your *own* skill is still the T1 "Skills,
+Plugins & Artifacts" exercise.
 
 A skill is a folder with a `SKILL.md` file:
 
