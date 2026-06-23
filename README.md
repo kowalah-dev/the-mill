@@ -1,7 +1,7 @@
 # The Mill — Booking System
 
 A lightweight hotel booking engine for **The Mill**, a retreat venue in
-Northamptonshire run by its proprietor, Dom Kell. This repository is the
+Somerset run by its proprietor, Dom Kell. This repository is the
 training environment for **Kowalah's T-series** (Claude for Technical Teams).
 You'll work in it to learn **Claude Code** at progressively deeper levels
 (T1 → T2 → T3).

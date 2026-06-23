@@ -15,7 +15,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "The Mill — Booking System",
-  description: "A booking engine for The Mill, a retreat venue in Northamptonshire.",
+  description: "A booking engine for The Mill, a retreat venue in Somerset.",
 };
 
 const NAV = [

@@ -6,7 +6,7 @@ description: Start here — orientation for the Kowalah T-series training at The
 # Welcome to The Mill
 
 You're working in **The Mill** — a booking system for a small retreat venue in
-Northamptonshire, run by its proprietor, **Dom Kell**. This repo is your
+Somerset, run by its proprietor, **Dom Kell**. This repo is your
 training environment for the Kowalah **T-series** (Claude for Technical Teams).
 You'll use it to learn **Claude Code** by doing real work on a real codebase.
 
