@@ -59,12 +59,32 @@ one teaches you:
 
 When you need to look something up, these are in [`reference/`](reference/):
 
+**Commands & features**
 - **[Claude Code features & commands](reference/claude-code-features.md)** —
   the built-in slash commands worth experimenting with (`/powerup`, `/init`,
-  `/memory`, `/agents`, `/hooks`, `/loop`, …) and how to ask Claude how it works.
+  `/memory`, `/agents`, `/hooks`, `/loop`, `/rewind`, …) and how to ask Claude
+  how it works.
+
+**Skills & plugins**
 - **[Finding & installing skills](reference/finding-skills.md)** — where to
   discover skills (incl. **skills.sh**) and how to add one to this project.
-- **[Plugins](reference/plugins.md)** — what plugins are and how to install one.
+- **[Plugins](reference/plugins.md)** — what plugins bundle, the ones worth
+  installing for The Mill, and how to share them with your team.
+
+**Automation (T2/T3)**
+- **[Loop library](reference/loop-examples.md)** — copy-pasteable `/goal`,
+  `/loop` and `/schedule` examples adapted to The Mill.
+- **[The babysit loop](reference/babysit-example.md)** — a worked `/loop`
+  example (the shipped `/babysit` PR-shepherd skill).
+- **[Agents & dynamic workflows](reference/agents-and-workflows.md)** — the four
+  ways to run agents in parallel: subagents, agent view, agent teams, dynamic
+  workflows. *Advanced.*
+
+**Governance & control (T3)**
+- **[Hooks](reference/hooks.md)** — run commands automatically at lifecycle
+  events to enforce rules deterministically.
+- **[Permissions & settings](reference/permissions-and-settings.md)** — settings
+  scopes, allow/ask/deny rules, and the permission modes.
 
 ## A note on this skill
 
