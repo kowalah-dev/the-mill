@@ -36,7 +36,9 @@ For every agent and automation you've built, answer:
 
 - **Ownership** — who owns this agent? Who do you call when it misbehaves?
 - **Permissions** — scope each agent's tools and `permissionMode`. What is it
-  allowed to do unattended, and what must it ask about?
+  allowed to do unattended, and what must it ask about? See
+  [`../reference/permissions-and-settings.md`](../reference/permissions-and-settings.md)
+  for settings scopes, allow/ask/deny rules, and the permission modes.
 - **Logging** — what does a run record (`STATE.md` is a start)? Could you audit
   what the loop did last night?
 - **Isolation** — use `isolation: worktree` so an agent experiments on its own
