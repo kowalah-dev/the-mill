@@ -27,8 +27,9 @@ which is exactly what you want for polling. See the side-by-side in
 
 ## Examples, by verb
 
-Each is adapted from a real loop people are running (credited), retargeted at The
-Mill's booking domain and test gate (`npm test` → `vitest run`).
+Each is adapted from a real loop people are running (credited inline below),
+retargeted at The Mill's booking domain and test gate (`npm test` → `vitest run`).
+See [Sources](#sources) for where they were collected.
 
 ### `/loop` — while you're here
 
@@ -117,3 +118,17 @@ failing test and call it done.
 
 **Build the loop, stay the engineer.** Pick one example, give it a budget and a
 real check, and watch what it does before you trust it unattended.
+
+## Sources
+
+The examples and the two warnings above were collected from:
+
+- **mvanhorn — [_WTF Is a Loop? Part 2: The 15 Loops People Are Actually Running_](https://x.com/mvanhorn/status/2068426104088748331)**
+  — the thread this library is built on: the three-verb model (via
+  inyourhandmedia), the "no `/routine`" trap, the per-verb loops (raycfu,
+  Steinberger, qbuilder, the hotel-emails routine), and both warning quotes.
+- **Matthew Berman — Forward Future Loop Library** — the curated catalog the
+  quality-streak goal (#13 in the thread) was lifted from.
+
+For the deeper "why" behind the three tiers in [`../t2/README.md`](../t2/README.md),
+see its own *Further reading* section (Osmani, Anthropic, Huntley).
