@@ -11,6 +11,12 @@ Take the fetch → confirm → exception agents from T2 and run them as a
 Who hands off to whom? What does each agent return? Where does the shared state
 (`STATE.md`, the database) live so they don't tread on each other?
 
+There's more than one way to run agents in parallel — subagents, agent teams,
+and **dynamic workflows** (a script that fans out and cross-checks results) each
+fit a different shape of work. See the advanced reference
+[`agents-and-workflows.md`](../reference/agents-and-workflows.md) for the full
+map and when to reach for each.
+
 ## 2. Production failure modes
 
 Pressure-test the confirmation loop:
