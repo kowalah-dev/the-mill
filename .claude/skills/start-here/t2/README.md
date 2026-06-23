@@ -97,6 +97,8 @@ verifier catches what it talked itself into. This is why the loop gates on
 Add hooks in `.claude/settings.json` that enforce rules deterministically — e.g.
 a `PostToolUse` hook running `npm test` after edits under `app/api/**`, or a
 `PreToolUse` hook blocking edits to `prisma/schema.prisma` without confirmation.
+See [`../reference/hooks.md`](../reference/hooks.md) for the event catalog, the
+config shape, and the new judgment (prompt/agent) hooks.
 
 ### The failure modes — answer each for The Mill
 - **The Ralph Wiggum loop** (quiet failure): what *objectively* fails this loop?
