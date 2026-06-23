@@ -43,9 +43,28 @@ is an example you can crib from.)
 
 ## 4. Make an artifact
 
-Ask Claude to build an **artifact** — a live, shareable page — from this repo.
-Good candidates: a "this week's arrivals" dashboard, or a walkthrough of a change
-you just made. This is the artifacts feature in a context that matches your work.
+Ask Claude to build an **artifact** — a live web page it publishes to a private
+URL on claude.ai that updates in place as the session continues. Two uses that
+fit real work here (not a dashboard — the app already has those):
+
+- **Compare UI approaches.** Pick a screen — the bookings list, or the
+  room-detail page — and ask for three different layouts on one page, side by
+  side, with a one-line tradeoff under each. Faster to decide from than prose.
+- **Watch a change as it develops** (dev-focused). Ask Claude to keep an artifact
+  showing the annotated diff of what it's editing and republish as it works, so
+  you follow the change visually instead of scrolling the terminal.
+
+Once it's published, try sharing it from the page header, asking Claude to update
+it (each publish is a new version, and open viewers see it change in place), and
+reopening the latest one with **`Ctrl+]`**.
+
+> **If Claude writes a local HTML file instead of a link**, artifacts aren't
+> enabled for your session. It's a beta feature that needs a **Team or Enterprise
+> plan**, a session **signed in with `/login`** (not an API key, gateway token,
+> or Bedrock/Vertex), and the Anthropic API — see the
+> [artifacts docs](https://code.claude.com/docs/en/artifacts). If that's not you,
+> open the HTML file Claude wrote in a browser; the page still works, you just
+> can't publish or share it.
 
 ## 5. Document the check-out flow
 
