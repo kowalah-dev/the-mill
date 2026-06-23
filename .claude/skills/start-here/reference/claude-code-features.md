@@ -67,6 +67,7 @@ infrastructure — no machine needed, but no local file access and a 1-hour mini
 | `/diff` | Interactive viewer for uncommitted changes. |
 | `/review` | Review a pull request locally in the current session. |
 | `/code-review` | Review your diff for bugs and cleanups (can apply fixes). |
+| `/rewind` | Undo Claude's edits — open the checkpoint menu (or press `Esc` twice on an empty prompt) and restore code, conversation, or both to an earlier point. A session-level "undo", not a Git replacement. |
 | `/debug` | Turn on debug logging to troubleshoot. |
 
 ## Asking Claude how Claude Code works

@@ -6,6 +6,13 @@ say which to focus on.
 
 Each exercise points at something real in this repo. Nothing here is a toy.
 
+> **Safety net — `/rewind`.** Experiment freely. Claude checkpoints your code
+> before each prompt, so **`/rewind`** (or `Esc` twice on an empty prompt) rolls
+> the files — or the conversation — back to any earlier point. One caveat that
+> matters here: it only tracks Claude's *file edits*, not changes made by bash
+> commands or API calls — so a `db:reset` or a booking written through the API
+> won't rewind. For that, lean on Git and `npm run db:reset`.
+
 ## 1. Context is everything — `CLAUDE.md`
 
 Run `/init` in this repo and let Claude generate a `CLAUDE.md`. Then open the
