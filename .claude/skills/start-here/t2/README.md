@@ -114,10 +114,27 @@ a `PostToolUse` hook running `npm test` after edits under `app/api/**`, or a
 ## The honest version
 
 The Mill is a *deliberately good* case for a loop — repetitive work with a real
-test gate. Most production tasks aren't, and the article this exercise is built
-on is blunt about it: most developers don't need a loop yet. The skill you're
-learning is the judgment to tell the difference. **Build the loop, stay the
-engineer.**
+test gate. Most production tasks aren't, and the sources below are blunt about
+it: most developers don't need a loop yet. The skill you're learning is the
+judgment to tell the difference. **Build the loop, stay the engineer.**
+
+## Further reading — where this comes from
+
+These three tiers synthesise the emerging "loop engineering" literature, in
+rough order of depth:
+
+- **Addy Osmani — [_Loop Engineering_](https://addyo.substack.com/p/loop-engineering)**
+  — the essay that named the practice and the building blocks (automations,
+  skills, state, sub-agents, connectors) behind Tiers 2–3.
+- **Anthropic — [_Building effective agents_](https://www.anthropic.com/engineering/building-effective-agents)**
+  — the original write-up of the evaluator–optimizer (maker/checker) pattern the
+  "Maker ≠ checker" section rests on.
+- **Geoffrey Huntley — [_Ralph Wiggum as a software engineer_](https://ghuntley.com/ralph/)**
+  — origin of the "Ralph Wiggum loop" failure mode in Tier 3.
+- **0xCodez — [_Loop engineering: the 14-step roadmap_](https://x.com/0xCodez/status/2064374643729773029)**
+  — an accessible thread that maps almost 1:1 onto these tiers (the 4-condition
+  test, the four-part minimum viable loop, the failure modes); itself a synthesis
+  of the three above.
 
 ---
 
