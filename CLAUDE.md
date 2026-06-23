@@ -2,7 +2,7 @@
 
 ## What this codebase is
 
-A hotel booking engine for The Mill, a retreat venue in Northamptonshire run by
+A hotel booking engine for The Mill, a retreat venue in Somerset run by
 its proprietor, Dom Kell. Guests can browse rooms, make bookings, check in, and
 check out. This repo is the training environment for Kowalah's T-series
 (Claude for Technical Teams) — participants extend and automate it across T1,
