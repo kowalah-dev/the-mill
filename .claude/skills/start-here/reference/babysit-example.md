@@ -1,7 +1,7 @@
 # Worked example: the `/babysit` loop
 
 This repo ships a real, runnable skill — [`/babysit`](../../babysit/SKILL.md) —
-as a study sample for the T2 loop-engineering exercise. It's the clearest
+as a study sample for the Intermediate-level loop-engineering exercise. It's the clearest
 real-world example of the `/loop` pattern: a check on a timer, with a verifier
 inside it and a stop condition built in.
 
@@ -78,7 +78,7 @@ least to most setup:
 
 ## Make it your own
 
-Two natural extensions for the T2 "harden" tier:
+Two natural extensions for the Intermediate level's "harden" tier:
 
 - **Budget it.** Loops cost tokens on every tick. Add an explicit cap — e.g. stop
   after N ticks with no new comments — on top of the existing self-cancel.

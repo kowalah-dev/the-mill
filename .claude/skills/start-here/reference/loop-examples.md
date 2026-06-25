@@ -2,7 +2,7 @@
 
 Copy-pasteable examples of the three automation commands, adapted to this repo.
 Treat this as a menu, not a to-do list — most tasks don't need any of these (see
-the 4-condition test in [`../t2/README.md`](../t2/README.md)). Reach for one only
+the 4-condition test in [`../intermediate/README.md`](../intermediate/README.md)). Reach for one only
 when the work repeats, the check is automated, and you can afford to step away.
 
 ## First, get the three verbs right
@@ -95,7 +95,7 @@ against the training DB.
 ## The two warnings the hype skips
 
 Both came back on every platform in the source article, and both are already
-baked into the T2 "harden" tier:
+baked into the Intermediate level's "harden" tier:
 
 > *"a loop is a money fire with a verifier on top."*
 
@@ -109,7 +109,7 @@ bill arrives.
 > part."* — @ahmetbilicanxyz
 
 This is why `/goal` runs a separate judge, why this repo gates on `npm test`
-(objective) rather than an agent's opinion, and why the T2 exercise splits the
+(objective) rather than an agent's opinion, and why the Intermediate exercise splits the
 maker from the checker. An agent grading its own homework will delete the
 failing test and call it done.
 

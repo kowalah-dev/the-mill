@@ -18,4 +18,4 @@ paths:
 
 A rule with no `paths` loads always; a rule with `paths` loads only when Claude
 reads a matching file. This directory is empty by design — adding a scoped rule
-(for `prisma/**` or `app/api/**`) is a good T1/T2 exercise.
+(for `prisma/**` or `app/api/**`) is a good Beginner/Intermediate exercise.

@@ -4,13 +4,13 @@
 
 A hotel booking engine for The Mill, a retreat venue in Somerset run by
 its proprietor, Dom Kell. Guests can browse rooms, make bookings, check in, and
-check out. This repo is the training environment for Kowalah's T-series
-(Claude for Technical Teams) — participants extend and automate it across T1,
-T2, and T3.
+check out. This repo is the training environment for the **T1 course** in
+Kowalah's T-series (Claude for Technical Teams) — participants extend and
+automate it across three levels: Beginner, Intermediate, and Advanced.
 
 If a participant is new or unsure where to begin, point them at the
 `/start-here` skill — it's the course concierge (welcome, the scenario, what to
-try first, and the T1/T2/T3 exercise guides).
+try first, and the Beginner/Intermediate/Advanced exercise guides).
 
 ## Stack
 
@@ -65,7 +65,7 @@ Two SQLite specifics to know:
 
 ## Current focus areas (as at T1 pilot, June 2026)
 
-- The nightly confirmation loop (T2): read `PENDING` bookings from
+- The nightly confirmation loop (Intermediate level): read `PENDING` bookings from
   `GET /api/bookings/pending`, confirm or flag each via `PATCH /api/bookings/[id]`,
   and record the run in `STATE.md`. Verify against the test suite.
 - Documentation: the check-in and check-out flows are undocumented
@@ -82,4 +82,4 @@ Two SQLite specifics to know:
 - Do not "fix" the intentional gaps (missing edge-case tests, the stub docs,
   the empty `.claude/agents/` and `.claude/rules/`) — they are the exercises.
   (`.claude/skills/` holds the `start-here` course guide and a `babysit`
-  worked-example skill; building your *own* skill is still the T1 exercise.)
+  worked-example skill; building your *own* skill is still the Beginner exercise.)

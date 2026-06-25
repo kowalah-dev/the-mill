@@ -1,14 +1,16 @@
 ---
 name: start-here
-description: Start here — orientation for the Kowalah T-series training at The Mill. Welcome, the scenario, what to try in your first five minutes, your level's exercises (T1/T2/T3), and where to find Claude Code features, skills and plugins. Run this first.
+description: Start here — orientation for the Kowalah T1 course at The Mill. Welcome, the scenario, what to try in your first five minutes, your level's exercises (Beginner/Intermediate/Advanced), and where to find Claude Code features, skills and plugins. Run this first.
 ---
 
 # Welcome to The Mill
 
 You're working in **The Mill** — a booking system for a small retreat venue in
 Somerset, run by its proprietor, **Dom Kell**. This repo is your
-training environment for the Kowalah **T-series** (Claude for Technical Teams).
-You'll use it to learn **Claude Code** by doing real work on a real codebase.
+training environment for the **T1 course** in Kowalah's T-series (Claude for
+Technical Teams). You'll use it to learn **Claude Code** by doing real work on a
+real codebase, working up through three levels — Beginner, Intermediate, and
+Advanced.
 
 The point of today isn't the hotel. It's learning to **direct Claude** — to set
 context, prompt well, build reusable tools, and automate. The Mill is just a
@@ -48,12 +50,12 @@ exercises.**
 
 ## Find your level
 
-Open the guide for the course you're on — it lists the exercises and what each
+Open the guide for the level you're on — it lists the exercises and what each
 one teaches you:
 
-- **T1 — Configure & document:** [`t1/README.md`](t1/README.md)
-- **T2 — Automate (loops, hooks, sub-agents):** [`t2/README.md`](t2/README.md)
-- **T3 — Orchestrate & govern:** [`t3/README.md`](t3/README.md)
+- **Beginner — Configure & document:** [`beginner/README.md`](beginner/README.md)
+- **Intermediate — Automate (loops, hooks, sub-agents):** [`intermediate/README.md`](intermediate/README.md)
+- **Advanced — Orchestrate & govern:** [`advanced/README.md`](advanced/README.md)
 
 ## Reference — where to find things
 

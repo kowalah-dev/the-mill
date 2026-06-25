@@ -5,7 +5,7 @@
  *
  * A client component: it PATCHes /api/bookings/[id] then refreshes the server
  * component tree so the new status shows immediately. This is the same API the
- * T2 confirmation loop drives programmatically.
+ * Intermediate confirmation loop drives programmatically.
  */
 import { useState, useTransition } from "react";
 import { useRouter } from "next/navigation";

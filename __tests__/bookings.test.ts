@@ -6,7 +6,7 @@
  * first (the install steps do this).
  *
  * The edge cases at the bottom are deliberately left as `it.todo` — writing
- * them is a training exercise (T1 M2 / T2). The suite stays green so the T2
+ * them is a training exercise (Beginner M2 / Intermediate). The suite stays green so the Intermediate
  * confirmation loop has a passing gate to verify against.
  */
 import { describe, it, expect } from "vitest";

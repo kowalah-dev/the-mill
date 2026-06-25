@@ -1,6 +1,6 @@
-# T2 — Automate (the nightly confirmation loop)
+# Intermediate — Automate (the nightly confirmation loop)
 
-T2 is where you stop prompting Claude by hand and start **designing a small
+The Intermediate level is where you stop prompting Claude by hand and start **designing a small
 system that prompts it for you** — one that finds the work, hands it to the
 agent, checks the result, records what happened, and decides the next move.
 That shift is "loop engineering," and it's the leverage point for the rest of

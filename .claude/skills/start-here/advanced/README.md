@@ -1,12 +1,12 @@
-# T3 — Orchestrate & Govern
+# Advanced — Orchestrate & Govern
 
-T3 builds on what you made in T2. You're no longer running one loop in one
+The Advanced level builds on what you made at the Intermediate level. You're no longer running one loop in one
 session — you're orchestrating multiple agents, thinking about what happens when
 automation meets production reality, and putting governance around it all.
 
 ## 1. Multi-agent orchestration
 
-Take the fetch → confirm → exception agents from T2 and run them as a
+Take the fetch → confirm → exception agents from the Intermediate level and run them as a
 **coordinated workflow** rather than one session doing everything in sequence.
 Who hands off to whom? What does each agent return? Where does the shared state
 (`STATE.md`, the database) live so they don't tread on each other?
@@ -24,7 +24,7 @@ Pressure-test the confirmation loop:
 - What happens if the loop **runs twice** at once? Is confirming a booking
   idempotent?
 - What happens when two bookings **double-book** the same room for overlapping
-  dates? (The missing edge-case tests from T1 are exactly this seam — the API
+  dates? (The missing edge-case tests from the Beginner level are exactly this seam — the API
   doesn't prevent it yet.)
 - What should happen when a room goes into **maintenance** mid-stay?
 

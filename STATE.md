@@ -1,1 +1,1 @@
-# Loop state — populated by the nightly confirmation loop (T2)
+# Loop state — populated by the nightly confirmation loop (Intermediate level)

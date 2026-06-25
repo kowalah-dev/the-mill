@@ -1,5 +1,5 @@
 <!--
-  Loop prompt for the T2 "nightly confirmation" exercise.
+  Loop prompt for the Intermediate "nightly confirmation" exercise.
 
   When you run a bare `/loop` (no prompt), Claude Code uses the contents of this
   file as the prompt for each iteration. Replace the placeholder below with your
@@ -18,4 +18,4 @@
 
 # Nightly booking confirmation
 
-(Replace this file's body with your confirmation workflow during T2.)
+(Replace this file's body with your confirmation workflow at the Intermediate level.)
