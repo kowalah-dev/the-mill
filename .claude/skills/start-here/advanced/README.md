@@ -1,56 +1,88 @@
 # Advanced — Orchestrate & Govern
 
-The Advanced level builds on what you made at the Intermediate level. You're no longer running one loop in one
-session — you're orchestrating multiple agents, thinking about what happens when
-automation meets production reality, and putting governance around it all.
+The Advanced level is the frontier. You're no longer prompting Claude, or even
+running one loop — you're writing the **orchestration**. One question runs through
+the whole level: **who holds the plan?** Coordinate sub-agents by prompt and Claude
+holds it, turn by turn. The advanced move is to write a **harness** — a script that
+holds the plan — so the fan-out, the cross-checking and the stop are deterministic
+and re-runnable. Then you govern a fleet of agents and ship what you build so it
+runs without you.
 
-## 1. Multi-agent orchestration
+> **Availability.** Some of this is gated or new: **dynamic workflows** need a paid
+> plan with API access and are opted into per run; **agent teams** are experimental
+> (an env flag); **Routines** are research preview. Each exercise notes a fallback.
 
-Take the fetch → confirm → exception agents from the Intermediate level and run them as a
-**coordinated workflow** rather than one session doing everything in sequence.
-Who hands off to whom? What does each agent return? Where does the shared state
-(`STATE.md`, the database) live so they don't tread on each other?
+## 1. Dynamic workflows — build the harness, not the prompt
 
-There's more than one way to run agents in parallel — subagents, agent teams,
-and **dynamic workflows** (a script that fans out and cross-checks results) each
-fit a different shape of work. See the advanced reference
-[`agents-and-workflows.md`](../reference/agents-and-workflows.md) for the full
-map and when to reach for each.
+The marquee feature. Instead of one conversation coordinating sub-agents in its
+head, you write — well, *Claude* writes — a **script** that fans them out,
+cross-checks their findings against each other, and synthesises a result. The plan
+lives in code you can **read, edit, and rerun**. The shape is always
+**fan-out → verify → synthesise**, with a hard budget; watch runs in `/workflows`.
 
-## 2. Production failure modes
+Run one over this codebase: *"Author and run a dynamic workflow that audits every
+route in `app/api/` in parallel — one agent per route looking for missing input
+validation and unhandled status transitions — then a verification pass that filters
+false positives, and a synthesis of the real findings. Show me the harness, run it,
+and save it as a reusable command."* Then open the generated script — the plan as
+code — and save it (`s`) to rerun on demand.
 
-Pressure-test the confirmation loop:
+*Not enabled (no paid/API access)? Read a saved harness script together — the
+plan-as-code is the lesson.*
 
-- What happens if the loop **runs twice** at once? Is confirming a booking
-  idempotent?
-- What happens when two bookings **double-book** the same room for overlapping
-  dates? (The missing edge-case tests from the Beginner level are exactly this seam — the API
-  doesn't prevent it yet.)
-- What should happen when a room goes into **maintenance** mid-stay?
+## 2. The orchestration menu — who holds the plan?
 
-Decide which of these the *code* should prevent and which an *agent* should catch.
+Five ways to run agents, one question to choose between them:
 
-## 3. Governance
+- **Subagents** and **agent teams** → Claude holds the plan, turn by turn.
+- **Dynamic workflows** → a script holds it.
+- **Background sessions** and **worktrees** → you hold it.
 
-For every agent and automation you've built, answer:
+Try an **agent team** for a multi-angle review: *"Spawn an agent team to review
+this codebase from three angles in parallel — security, performance, and test
+coverage — each teammate claiming its angle, then compare findings and surface the
+disagreements."* The full map of the four approaches and when each fits is in
+[`../reference/agents-and-workflows.md`](../reference/agents-and-workflows.md).
 
-- **Ownership** — who owns this agent? Who do you call when it misbehaves?
-- **Permissions** — scope each agent's tools and `permissionMode`. What is it
-  allowed to do unattended, and what must it ask about? See
-  [`../reference/permissions-and-settings.md`](../reference/permissions-and-settings.md)
-  for settings scopes, allow/ask/deny rules, and the permission modes.
-- **Logging** — what does a run record (`STATE.md` is a start)? Could you audit
-  what the loop did last night?
-- **Isolation** — use `isolation: worktree` so an agent experiments on its own
-  copy of the repo without touching main.
+*Agent teams are experimental — set `CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS=1`. No
+flag? Run the three angles as three subagents instead.*
 
-## 4. Plugins
+## 3. Govern the fleet
 
-Package the skills, sub-agents and hooks you built into a **plugin** so your
-whole squad gets them with one install — instead of each engineer recreating
-them. See [`../reference/plugins.md`](../reference/plugins.md).
+Parallel and unattended raises the stakes. For every agent and automation:
+
+- **Ownership** — who owns it? Who do you call when it misbehaves?
+- **Permissions** — scope its `tools` and `permissionMode`. What runs unattended,
+  what must it ask about? See
+  [`../reference/permissions-and-settings.md`](../reference/permissions-and-settings.md).
+- **Isolation** — `isolation: worktree` lets an agent work on its own copy of the
+  repo without touching main.
+- **Judgment gate** — a **hook** that spawns a sub-agent (or asks Claude) *"is this
+  good?"* and blocks until yes. See [`../reference/hooks.md`](../reference/hooks.md).
+
+Then the production failure modes — decide which the *code* should prevent and
+which an *agent* should catch:
+
+- **Idempotency** — what if a job runs **twice** at once?
+- **Double-booking** — two bookings, same room, overlapping dates. The exact seam
+  the Beginner edge-case tests leave open — the API doesn't prevent it.
+- **Maintenance mid-stay** — a room goes into maintenance while occupied.
+
+## 4. Ship it unattended — Routines & plugins
+
+Make what you built durable.
+
+- **Routine** (`/schedule`) — runs unattended in Anthropic's cloud, laptop off, on
+  a schedule, an API call, or a GitHub event. *This* is the right home for Dom's
+  nightly booking confirmation (read `PENDING`, confirm or flag each, record it):
+  recurring and unattended, it was never a session `/loop`. *Routines are research
+  preview — not available? Design it on paper: trigger, prompt, permissions.*
+- **Plugin** — package the skills, sub-agents, hooks and workflows you built into a
+  plugin so the whole squad gets them with one install instead of recreating them.
+  See [`../reference/plugins.md`](../reference/plugins.md).
 
 ---
 
-See [`../reference/claude-code-features.md`](../reference/claude-code-features.md)
-and [`../reference/finding-skills.md`](../reference/finding-skills.md).
+See [`../reference/claude-code-features.md`](../reference/claude-code-features.md),
+[`../reference/agents-and-workflows.md`](../reference/agents-and-workflows.md), and
+[`../reference/finding-skills.md`](../reference/finding-skills.md).

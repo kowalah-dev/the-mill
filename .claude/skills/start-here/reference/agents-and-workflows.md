@@ -3,8 +3,8 @@
 Most of this course runs in **one** Claude Code session. This page is for when
 one session isn't the right shape — when you want work split across several
 agents running at once. It's an advanced reference: reach for it after you're
-comfortable with a single loop (T2) and the orchestration ideas in
-[T3 §1](../t3/README.md).
+comfortable with a single loop (the Intermediate level) and the orchestration
+ideas in [the Advanced level](../advanced/README.md).
 
 The full, authoritative map is Claude Code's
 [**Run agents in parallel**](https://code.claude.com/docs/en/agents) docs. This
@@ -19,8 +19,8 @@ and what each looks like against the booking system.
 
 | Approach | What it gives you | Reach for it when | On The Mill |
 |----------|-------------------|-------------------|-------------|
-| **[Subagents](https://code.claude.com/docs/en/sub-agents)** | Delegated workers *inside one session*, each with its own context, returning a summary | A side task would flood your main conversation with search results, logs, or files you won't reference again | The T2 **maker/checker** verifier; an *explorer* that greps `app/` and reports back without dumping it all into your session |
-| **[Agent view](https://code.claude.com/docs/en/agent-view)** *(research preview)* | One screen (`claude agents`) to dispatch and monitor background sessions, each in its own worktree | You have several independent tasks, want to hand them off, and step in only when one needs you | Dispatch the T1 edge-case tests (double-booking, past check-in, maintenance) as separate background sessions |
+| **[Subagents](https://code.claude.com/docs/en/sub-agents)** | Delegated workers *inside one session*, each with its own context, returning a summary | A side task would flood your main conversation with search results, logs, or files you won't reference again | The Intermediate **maker/checker** verifier; an *explorer* that greps `app/` and reports back without dumping it all into your session |
+| **[Agent view](https://code.claude.com/docs/en/agent-view)** *(research preview)* | One screen (`claude agents`) to dispatch and monitor background sessions, each in its own worktree | You have several independent tasks, want to hand them off, and step in only when one needs you | Dispatch the Beginner edge-case tests (double-booking, past check-in, maintenance) as separate background sessions |
 | **[Agent teams](https://code.claude.com/docs/en/agent-teams)** *(experimental, off by default)* | Multiple coordinated sessions with a shared task list and inter-agent messaging, run by a lead | You want Claude to split a project into pieces, assign them, and keep workers in sync | Split the booking feature: one teammate owns `app/api/bookings`, one owns rooms, one owns tests |
 | **[Dynamic workflows](https://code.claude.com/docs/en/workflows)** | A *script* that runs many subagents and cross-checks their results — beyond what one turn can coordinate | A job outgrows a handful of subagents, or findings need verifying against each other: a codebase-wide audit, a large migration, cross-checked research | Audit **every** route in `app/api/` for missing validation; or verify the double-booking logic from several adversarial angles |
 
@@ -32,13 +32,13 @@ too important to leave to one conversation's memory.
 
 ## Subagents — the everyday one
 
-A subagent is the natural next step from the T2 **Maker ≠ checker** split. You
+A subagent is the natural next step from the Intermediate **Maker ≠ checker** split. You
 define it as a markdown file in [`.claude/agents/`](../../../agents/README.md)
 (`name` + `description` required; `tools`, `model`, `permissionMode`,
 `isolation: worktree` optional), and the main session delegates to it when a
 task matches its `description`. Two Mill-shaped uses:
 
-- **A verifier** that checks the confirmer's work against the spec and `npm test`
+- **A verifier** that checks the test-writer's work against the spec and `npm test`
   — the second pair of eyes the loop needs to run unattended.
 - **An explorer** that answers "where does room-status get set?" by searching the
   codebase and returning just the answer, instead of filling your main context
@@ -74,7 +74,7 @@ cover writing one (or running a bundled one).
   checkout per session so parallel agents never edit the same files. Subagents
   and sessions you run yourself can each take one; agent view assigns them
   automatically. (Agent teams *don't* isolate teammates — partition the work by
-  file instead.) This is the `isolation: worktree` you met in T3 governance.
+  file instead.) This is the `isolation: worktree` you met in Advanced governance.
 - **`/batch`** — a packaged skill that splits one large change into 5–30
   worktree-isolated subagents, each opening its own PR. A ready-made use of
   subagents + worktrees, not a separate style.
@@ -90,7 +90,7 @@ cover writing one (or running a bundled one).
 
 ## Governance still applies
 
-Everything from [T3 §3](../t3/README.md) gets *more* important once work is
+Everything from [Advanced governance](../advanced/README.md) gets *more* important once work is
 parallel and unattended: scope each agent's tools and `permissionMode`, keep an
 audit trail of what ran, and put a human gate before anything irreversible. More
 agents means more surface area, not less responsibility.
