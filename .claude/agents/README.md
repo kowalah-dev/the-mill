@@ -1,7 +1,7 @@
 # Sub-agents
 
 This directory is intentionally empty. It's where you'll define **sub-agents**
-during T2.
+at the Intermediate level.
 
 Each sub-agent is a markdown file with YAML frontmatter:
 
@@ -14,5 +14,5 @@ Required frontmatter: `name` and `description`. Optional: `tools`, `model`,
 agent's system prompt. The main session delegates to a sub-agent when a task
 matches its `description`.
 
-For T2/T3, the booking-confirmation workflow is a good fit for multiple agents:
+For the Intermediate/Advanced levels, the booking-confirmation workflow is a good fit for multiple agents:
 one to fetch pending bookings, one to confirm them, one to handle exceptions.

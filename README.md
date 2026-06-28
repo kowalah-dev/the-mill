@@ -2,9 +2,9 @@
 
 A lightweight hotel booking engine for **The Mill**, a retreat venue in
 Somerset run by its proprietor, Dom Kell. This repository is the
-training environment for **Kowalah's T-series** (Claude for Technical Teams).
-You'll work in it to learn **Claude Code** at progressively deeper levels
-(T1 → T2 → T3).
+training environment for the **T1 course** in Kowalah's T-series (Claude for
+Technical Teams). You'll work in it to learn **Claude Code** at progressively
+deeper levels (Beginner → Intermediate → Advanced).
 
 > **Two ways to follow this guide:**
 > - **Newer to development?** Use the **Claude Code Desktop** app and let Claude
@@ -34,11 +34,12 @@ You need three things installed once. Each links to a simple installer:
 
 ## Step 1 — Get the code onto your computer
 
-Pick the path that matches what you'll do. Most of the course (T1, and the local
-T2 loop) runs entirely on your machine — **you only need your own GitHub copy if
-you want to open pull requests** and try the `/babysit` exercise.
+Pick the path that matches what you'll do. Most of the course (the Beginner
+level, and the local Intermediate loop) runs entirely on your machine — **you
+only need your own GitHub copy if you want to open pull requests** and try the
+`/babysit` exercise.
 
-**A. Just exploring, or doing T1 / the local T2 loop** — clone or download:
+**A. Just exploring, or doing the Beginner level / the local Intermediate loop** — clone or download:
 
 ```bash
 git clone https://github.com/kowalah-dev/the-mill
@@ -124,7 +125,7 @@ keys, no `.env` file: the database is a single SQLite file at `prisma/dev.db`.
 
 In Claude Code, type **`/start-here`**. It's your course concierge — a welcome,
 the scenario, what to try in your first five minutes, and the exercise guide for
-your level (T1, T2 or T3). Start there.
+your level (Beginner, Intermediate or Advanced). Start there.
 
 ---
 
@@ -137,13 +138,13 @@ your level (T1, T2 or T3). Start there.
 | `prisma/` | `schema.prisma` (data model) and `seed.ts` (20 rooms, 15 guests, 30 bookings) |
 | `lib/` | Prisma client (`db.ts`), shared types (`types.ts`), formatters (`format.ts`) |
 | `components/` | UI components, including shadcn/ui primitives in `components/ui/` |
-| `__tests__/` | Vitest suite — the verification gate for the T2 loop |
-| `CLAUDE.md` | Pre-built project context — read it as a worked example in T1 |
-| `.claude/skills/start-here/` | **Run `/start-here` first** — the course concierge and T1/T2/T3 exercise guides |
-| `.claude/skills/babysit/` | A worked-example `/loop` skill (PR shepherd) — study it for T2; see `start-here/reference/babysit-example.md` |
-| `.claude/` | `agents/` and `rules/` are empty, ready for exercises; `loop.md` scaffolds the T2 loop |
-| `docs/` | `checkout-flow.md` — a stub you'll fill in during T1 |
-| `STATE.md` | Loop state, written by the T2 nightly confirmation loop |
+| `__tests__/` | Vitest suite — the verification gate for the Intermediate loop |
+| `CLAUDE.md` | Pre-built project context — read it as a worked example at the Beginner level |
+| `.claude/skills/start-here/` | **Run `/start-here` first** — the course concierge and Beginner/Intermediate/Advanced exercise guides |
+| `.claude/skills/babysit/` | A worked-example `/loop` skill (PR shepherd) — study it for the Intermediate level; see `start-here/reference/babysit-example.md` |
+| `.claude/` | `agents/` and `rules/` are empty, ready for exercises; `loop.md` scaffolds the Intermediate loop |
+| `docs/` | `checkout-flow.md` — a stub you'll fill in at the Beginner level |
+| `STATE.md` | Loop state, written by the Intermediate nightly confirmation loop |
 
 ## Common commands
 

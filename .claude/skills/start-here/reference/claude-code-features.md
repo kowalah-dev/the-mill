@@ -8,7 +8,7 @@ Code session to see what's available; these are the ones that matter most here.
 | Command | What it does |
 |---------|--------------|
 | `/powerup` | **Discover Claude Code features through quick interactive lessons.** Animated, in-terminal demos of context, hooks, MCP, sub-agents and `/loop`. The best first thing to run. |
-| `/init` | Analyses the codebase and generates a `CLAUDE.md`. Run it here and compare to the committed one (T1 exercise 1). |
+| `/init` | Analyses the codebase and generates a `CLAUDE.md`. Run it here and compare to the committed one (Beginner exercise 1). |
 | `/help` | Lists the commands available in your session. |
 
 ## Configuration & context
@@ -22,7 +22,7 @@ Code session to see what's available; these are the ones that matter most here.
 | `/clear` | Start a fresh conversation with empty context. |
 | `/compact` | Summarise the conversation to free up context. |
 
-## Automation (T2/T3)
+## Automation (Intermediate/Advanced)
 
 | Command | What it does |
 |---------|--------------|

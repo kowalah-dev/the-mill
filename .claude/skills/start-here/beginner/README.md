@@ -1,6 +1,6 @@
-# T1 — Configure & Document
+# Beginner — Configure & Document
 
-In T1 you'll leave with a configured tool, working prompts, and something you
+At the Beginner level you'll leave with a configured tool, working prompts, and something you
 built. Work through the exercises below at your own pace — your facilitator will
 say which to focus on.
 
@@ -85,7 +85,8 @@ what order. File the result in `docs/checkout-flow.md`.
 
 What would you connect The Mill to if Claude could read it directly — a real
 database, a calendar, Slack? Write a short wishlist: for each, what it is and the
-first question you'd ask Claude once it's connected. (Connecting one live is T3.)
+first question you'd ask Claude once it's connected. (Connecting one live is the
+Advanced level.)
 
 ---
 

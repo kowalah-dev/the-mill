@@ -10,7 +10,7 @@ skills by hand. A plugin can contain:
 - **MCP servers**,
 - default settings.
 
-This is the T3 endgame: take the skills, agents and hooks you built against The
+This is the Advanced-level endgame: take the skills, agents and hooks you built against The
 Mill and package them so your squad shares them.
 
 ## Finding & installing

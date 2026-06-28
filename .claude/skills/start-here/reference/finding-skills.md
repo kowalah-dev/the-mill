@@ -13,7 +13,7 @@ them with `/`:
   Agents**. Loads accurate, current API guidance (tool use, streaming,
   structured outputs, model migration, building agents). It also activates
   automatically when you work in code that imports `anthropic` /
-  `@anthropic-ai/sdk`. Useful in T3 when you go beyond Claude Code into the API.
+  `@anthropic-ai/sdk`. Useful at the Advanced level when you go beyond Claude Code into the API.
 - **Claude Code docs / "how do I…?"** — you can ask Claude directly how any
   Claude Code feature works, run **`/powerup`** for guided lessons, or read the
   full docs at **code.claude.com/docs**.
@@ -38,6 +38,6 @@ The `SKILL.md` needs YAML frontmatter (at minimum a `description`) and a markdow
 body of instructions. Once the file exists, invoke it with `/<skill-name>` — no
 restart needed. Supporting files (templates, examples, sub-docs) can live in the
 same folder, exactly as this `start-here` skill keeps its `reference/` and
-`t1`–`t3` guides.
+`beginner`–`advanced` guides.
 
-Building your own skill is a **T1 exercise** — see [`../t1/README.md`](../t1/README.md).
+Building your own skill is a **Beginner exercise** — see [`../beginner/README.md`](../beginner/README.md).
