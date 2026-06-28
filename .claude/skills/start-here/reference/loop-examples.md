@@ -60,9 +60,20 @@ here (push a branch, open a PR with `gh pr create`, then run the loop).
 
 ### `/goal` — until it's proven done
 
-**Drain the pending queue, capped** (after qbuilder's bounded plan-verify-fix) —
-the nightly confirmation job as a one-sitting goal with a hard cap so it can't
-run away:
+**Drive the test backlog to green** — the Intermediate development loop: keep
+working until the repo's `it.todo` edge-case tests are implemented and the suite
+passes:
+```
+/goal every it.todo in __tests__ is implemented and npm test passes. Use the
+write-test skill, append progress to STATE.md, and if a test can't honestly pass
+because the API doesn't enforce the behaviour (e.g. double-booking), stop and flag
+it — don't weaken the test.
+```
+
+**Clear a backlog in one sitting, capped** (after qbuilder's bounded
+plan-verify-fix) — confirm the pending bookings *now*, with a hard cap so it can't
+run away. (The *unattended, every-night* version of this is a Routine, not a goal —
+see `/schedule` below.)
 ```
 /goal every PENDING booking is either CONFIRMED or flagged with a reason, and
 npm test passes. Append a run summary to STATE.md each pass. Max 5 iterations —
@@ -78,6 +89,15 @@ clean passes.
 ```
 
 ### `/schedule` — while you're gone
+
+**The nightly booking confirmation** — the job The Mill's story is built around,
+in its rightful home: recurring and unattended, so it's a **Routine**, not a
+`/loop`. Runs in the cloud with your laptop closed:
+```
+/schedule every night, read the PENDING bookings, confirm the ones whose room is
+free for the dates and flag the rest with a reason, then open a summary of what
+changed. Never delete a booking or take payment without a human.
+```
 
 **The guest-email triage** (after the r/LangChain hotel-email agent — the one
 example in the source piece that's literally The Mill's world) — classify and

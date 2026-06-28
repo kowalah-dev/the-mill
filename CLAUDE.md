@@ -65,9 +65,13 @@ Two SQLite specifics to know:
 
 ## Current focus areas (as at T1 pilot, June 2026)
 
-- The nightly confirmation loop (Intermediate level): read `PENDING` bookings from
-  `GET /api/bookings/pending`, confirm or flag each via `PATCH /api/bookings/[id]`,
-  and record the run in `STATE.md`. Verify against the test suite.
+- The development loop (Intermediate level): use `/goal` to drive the `it.todo`
+  edge-case tests in `__tests__/` to green (via a `write-test` skill), recording
+  progress in `STATE.md` and gating on the test suite. (In Claude Code, `/loop`
+  and `/goal` are session dev tools.) The nightly booking confirmation — read
+  `PENDING` from `GET /api/bookings/pending`, confirm or flag each via
+  `PATCH /api/bookings/[id]` — is the **Advanced** exercise: a coordinated
+  multi-agent job you'd ship unattended as a Routine (`/schedule`), not a loop.
 - Documentation: the check-in and check-out flows are undocumented
   (`docs/checkout-flow.md` is a stub).
 - Tests: `__tests__/bookings.test.ts` and `rooms.test.ts` cover the happy path

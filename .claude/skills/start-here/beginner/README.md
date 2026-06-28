@@ -27,28 +27,58 @@ Run `/init` in this repo and let Claude generate a `CLAUDE.md`. Then open the
 **Stretch:** add a path-scoped rule in `.claude/rules/` (see its README) — e.g.
 Prisma conventions that load only when you edit `prisma/`.
 
-## 2. Prompt like a builder — GPS
+## 2. Talk, don't type
 
-`__tests__/bookings.test.ts` and `rooms.test.ts` have edge cases left as
-`it.todo` (double-booking, past check-in dates, maintenance rooms). Pick one and
-use the **GPS** framing to get Claude to implement it:
+You don't have to type your prompts. Claude Code on the desktop has **voice
+input** — describe what you want out loud. It's often faster and more natural for
+messy, exploratory asks, and it lowers the barrier to just *trying* something.
 
-- **Givens** — the conventions Claude needs (string enums via `lib/types.ts`,
-  `Float` money, the API in `app/api/`).
-- **Problem** — the specific behaviour that isn't handled yet.
-- **Success** — what a passing test looks like.
+Pick a real question about this codebase. **Type it first.** Then press the
+microphone and **say the same thing** — for example: *"Walk me through how a
+booking moves through this app, from the API route to the database, and where its
+status changes."* Notice which felt better, and when you'd reach for each.
 
-The happy-path suite is green (`npm test`), so you get a tight loop: write one
-real edge-case test, watch it pass.
+## 3. Prompt like a builder — GPS
 
-## 3. Build a skill
+The skill here isn't coding — it's **describing**. **GPS** gives Claude the three
+things it needs so it stops guessing:
 
-Create your own skill in `.claude/skills/` — for example `/confirm-booking`,
-a reusable workflow that reads a booking and confirms it through the API. See
-`.claude/skills/README.md` for the `SKILL.md` format. (This `start-here` skill
-is an example you can crib from.)
+- **Givens** — what's already true, and the patterns to reuse.
+- **Problem** — the feature you want, in plain words.
+- **Success** — how you'll know it's done.
 
-## 4. Make an artifact
+Try it on a feature anyone can explain: *"we let guests book rooms; now let them
+book a table at The Granary, the on-site restaurant."* Write it as GPS — Givens
+(The Mill already books rooms, with statuses, a JSON API and a database; follow
+those patterns), Problem (no way to reserve a table yet — add date, sitting and
+party size), Success (I can create a reservation the same way and see it). Watch
+how the Givens stop Claude inventing its own conventions.
+
+**Tighter, verifiable variant:** `__tests__/bookings.test.ts` has edge cases left
+as `it.todo`. Write a GPS prompt whose **Success** is "make this test pass," then
+`npm test` and watch it go green. (The double-booking one is a deliberate trap —
+the API doesn't prevent it; that's the bridge to the Advanced level.)
+
+## 4. Build a skill
+
+A skill is a **repeatable developer workflow** that lives in the project, not your
+head — and you don't hand-write it. Describe what you want and let the
+**skill-creator** scaffold the `SKILL.md`. Build a `/write-test` skill: *"Use the
+skill-creator to build me a skill called write-test that finds an untested edge
+case in this repo's API and writes a passing test for it — baking in our
+conventions (tests live in `__tests__/`, run with Vitest against the seeded
+`dev.db`, import the route handlers directly and use the `req()` helper, statuses
+come from `lib/types.ts`, and tests stay re-runnable). It should list the
+`it.todo` gaps, propose the best one, check whether the API enforces it, write the
+test GPS-style, run `npm test`, and stay honest if it can't go green."*
+
+Then invoke `/write-test`. **Make it yours:** swap in any workflow you'd actually
+repeat (a `/seed-check`, a `/guest-summary`). See `.claude/skills/README.md` for
+the `SKILL.md` format. (If `/skill-creator` isn't installed, Claude can scaffold
+the skill from the same description; see
+[`../reference/finding-skills.md`](../reference/finding-skills.md).)
+
+## 5. Make an artifact
 
 Ask Claude to build an **artifact** — a live web page it publishes to a private
 URL on claude.ai that updates in place as the session continues. Two uses that
@@ -73,20 +103,35 @@ reopening the latest one with **`Ctrl+]`**.
 > open the HTML file Claude wrote in a browser; the page still works, you just
 > can't publish or share it.
 
-## 5. Document the check-out flow
+## 6. Document the check-out flow
 
 `docs/checkout-flow.md` is a heading-only stub — the check-out flow is genuinely
-undocumented. Use the **interview-extraction** prompt: *"Interview me about how
-check-out works, five questions one at a time, then produce a structured doc."*
-Capture what happens to the booking status, the room status, and payment, and in
-what order. File the result in `docs/checkout-flow.md`.
+undocumented. The move here is to make Claude the **interviewer**: it asks, you
+decide. (Same technique whether the output is a handover doc or a build spec.)
 
-## 6. MCP wishlist
+You're new to The Mill, so let Claude propose answers you can confirm: *"Interview
+me about how check-out **should** work — one question at a time. I'm new here, so
+for anything I don't know, propose a sensible default based on how the rest of the
+system already works (read the code), and I'll confirm or adjust. After about five
+questions, write a structured doc to `docs/checkout-flow.md` covering the booking
+status, the room status, and payment, in order."*
 
-What would you connect The Mill to if Claude could read it directly — a real
-database, a calendar, Slack? Write a short wishlist: for each, what it is and the
-first question you'd ask Claude once it's connected. (Connecting one live is the
-Advanced level.)
+## 7. Connect a live system — MCP
+
+MCP lets Claude read your live systems directly — a calendar, a database, GitHub,
+Slack. The wishlist is the easy part; the lesson is seeing what changes when Claude
+can actually *reach* one. Three steps:
+
+1. **Explore** — run `/plugin` and `/mcp` to browse what's connectable, and
+   shortlist two or three you'd genuinely use at work.
+2. **Connect one** — the safe default your facilitator pre-tested, or one of your
+   own systems if you have the credentials handy.
+3. **Ask through it** — pose your first real question and watch Claude answer from
+   the live system.
+
+Before you point Claude at anything real, run the **three-question gate** — a live
+connection means real data leaves to the model. No system to hand? The written
+shortlist from step 1 is a fine place to stop.
 
 ---
 
