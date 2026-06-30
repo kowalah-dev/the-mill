@@ -26,6 +26,11 @@ describe("GET /api/rooms", () => {
     expect(rooms.length).toBe(1);
     expect(rooms[0].status).toBe("MAINTENANCE");
   });
+
+  it("rejects an unknown status filter with a 400", async () => {
+    const res = await listRooms(req("/api/rooms?status=garbage"));
+    expect(res.status).toBe(400);
+  });
 });
 
 describe("GET /api/rooms/available", () => {
