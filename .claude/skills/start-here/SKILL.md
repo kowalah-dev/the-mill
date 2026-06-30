@@ -33,13 +33,25 @@ exercises.**
 
 ## Your first five minutes
 
-1. **Get it running** (if you haven't):
+1. **Get your environment set up and running** (if you haven't). This repo
+   ships *without* a database — the SQLite file is generated from the schema and
+   seed data, so the very first step is always: install dependencies, create the
+   database, seed it, then start the server.
+
+   **In Claude Desktop** — just ask: *"Let's get my environment set up and start
+   a preview of the app."* Claude runs the setup for you (installs dependencies,
+   creates and seeds the database), then spins up the dev server and gives you a
+   live preview to click around in — no terminal needed.
+
+   **In an IDE or terminal** — run it yourself:
    ```bash
    npm install
-   npx prisma db push && npx prisma db seed
+   npx prisma db push && npx prisma db seed   # creates + seeds the database
    npm run dev
    ```
-   Open the URL it prints. Click around: Dashboard, Bookings, Rooms, Guests.
+   Then open the URL it prints.
+
+   Either way, click around once it's up: Dashboard, Bookings, Rooms, Guests.
 
 2. **Try `/powerup`** — Claude Code's built-in interactive lessons. A quick,
    hands-on tour of features you'll use today.
