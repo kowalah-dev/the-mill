@@ -41,9 +41,28 @@ export async function POST(request: Request) {
     );
   }
 
-  const room = await prisma.room.findUnique({ where: { id: Number(roomId) } });
+  const guestIdNum = Number(guestId);
+  const roomIdNum = Number(roomId);
+  if (
+    !Number.isInteger(guestIdNum) ||
+    guestIdNum <= 0 ||
+    !Number.isInteger(roomIdNum) ||
+    roomIdNum <= 0
+  ) {
+    return NextResponse.json(
+      { error: "guestId and roomId must be positive integers." },
+      { status: 400 },
+    );
+  }
+
+  const room = await prisma.room.findUnique({ where: { id: roomIdNum } });
   if (!room) {
     return NextResponse.json({ error: "Room not found." }, { status: 404 });
+  }
+
+  const guest = await prisma.guest.findUnique({ where: { id: guestIdNum } });
+  if (!guest) {
+    return NextResponse.json({ error: "Guest not found." }, { status: 404 });
   }
 
   const inDate = new Date(checkIn);
@@ -55,8 +74,8 @@ export async function POST(request: Request) {
 
   const booking = await prisma.booking.create({
     data: {
-      guestId: Number(guestId),
-      roomId: Number(roomId),
+      guestId: guestIdNum,
+      roomId: roomIdNum,
       checkIn: inDate,
       checkOut: outDate,
       status: isBookingStatus(status) ? status : "PENDING",

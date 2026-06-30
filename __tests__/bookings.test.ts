@@ -72,6 +72,38 @@ describe("POST /api/bookings", () => {
       params: Promise.resolve({ id: String(booking.id) }),
     });
   });
+
+  it("returns 400 (not 500) when roomId is not a number", async () => {
+    const res = await createBooking(
+      req("/api/bookings", {
+        method: "POST",
+        body: JSON.stringify({
+          guestId: 1,
+          roomId: "abc",
+          checkIn: "2099-01-01",
+          checkOut: "2099-01-02",
+        }),
+      }),
+    );
+
+    expect(res.status).toBe(400);
+  });
+
+  it("returns 404 when the guest does not exist", async () => {
+    const res = await createBooking(
+      req("/api/bookings", {
+        method: "POST",
+        body: JSON.stringify({
+          guestId: 999999,
+          roomId: 18,
+          checkIn: "2099-01-01",
+          checkOut: "2099-01-02",
+        }),
+      }),
+    );
+
+    expect(res.status).toBe(404);
+  });
 });
 
 describe("PATCH /api/bookings/[id]", () => {
