@@ -36,6 +36,11 @@ describe("GET /api/bookings", () => {
     expect(bookings.length).toBe(8);
     expect(bookings.every((b: { status: string }) => b.status === "CONFIRMED")).toBe(true);
   });
+
+  it("rejects an unknown status filter with a 400", async () => {
+    const res = await listBookings(req("/api/bookings?status=garbage"));
+    expect(res.status).toBe(400);
+  });
 });
 
 describe("GET /api/bookings/pending", () => {
