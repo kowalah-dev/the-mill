@@ -102,6 +102,20 @@ describe("PATCH /api/bookings/[id]", () => {
   });
 });
 
+describe("non-numeric booking id", () => {
+  it("returns 404 (not a 500) when the id is not a number", async () => {
+    const res = await PATCH(
+      req("/api/bookings/abc", {
+        method: "PATCH",
+        body: JSON.stringify({ status: "CONFIRMED" }),
+      }),
+      { params: Promise.resolve({ id: "abc" }) },
+    );
+
+    expect(res.status).toBe(404);
+  });
+});
+
 // ---------------------------------------------------------------------------
 // Edge cases — NOT YET COVERED. Writing these is the exercise.
 // ---------------------------------------------------------------------------

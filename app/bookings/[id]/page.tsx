@@ -18,8 +18,11 @@ export default async function BookingDetailPage({
   params: Promise<{ id: string }>;
 }) {
   const { id } = await params;
+  const bookingId = Number(id);
+  if (!Number.isInteger(bookingId) || bookingId <= 0) notFound();
+
   const booking = await prisma.booking.findUnique({
-    where: { id: Number(id) },
+    where: { id: bookingId },
     include: { guest: true, room: true },
   });
 

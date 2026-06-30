@@ -16,11 +16,21 @@ import { isBookingStatus } from "@/lib/types";
 
 type Context = { params: Promise<{ id: string }> };
 
+/** Parse a route id into a positive integer, or null if it isn't one. */
+function parseId(id: string): number | null {
+  const n = Number(id);
+  return Number.isInteger(n) && n > 0 ? n : null;
+}
+
 export async function GET(_request: Request, { params }: Context) {
   const { id } = await params;
+  const bookingId = parseId(id);
+  if (bookingId === null) {
+    return NextResponse.json({ error: "Booking not found." }, { status: 404 });
+  }
 
   const booking = await prisma.booking.findUnique({
-    where: { id: Number(id) },
+    where: { id: bookingId },
     include: { guest: true, room: true },
   });
 
@@ -33,6 +43,11 @@ export async function GET(_request: Request, { params }: Context) {
 
 export async function PATCH(request: Request, { params }: Context) {
   const { id } = await params;
+  const bookingId = parseId(id);
+  if (bookingId === null) {
+    return NextResponse.json({ error: "Booking not found." }, { status: 404 });
+  }
+
   const body = await request.json().catch(() => null);
   if (!body) {
     return NextResponse.json({ error: "Invalid JSON body." }, { status: 400 });
@@ -47,14 +62,14 @@ export async function PATCH(request: Request, { params }: Context) {
   }
 
   const existing = await prisma.booking.findUnique({
-    where: { id: Number(id) },
+    where: { id: bookingId },
   });
   if (!existing) {
     return NextResponse.json({ error: "Booking not found." }, { status: 404 });
   }
 
   const booking = await prisma.booking.update({
-    where: { id: Number(id) },
+    where: { id: bookingId },
     data: {
       ...(status !== undefined ? { status } : {}),
       ...(notes !== undefined ? { notes } : {}),
@@ -67,14 +82,18 @@ export async function PATCH(request: Request, { params }: Context) {
 
 export async function DELETE(_request: Request, { params }: Context) {
   const { id } = await params;
+  const bookingId = parseId(id);
+  if (bookingId === null) {
+    return NextResponse.json({ error: "Booking not found." }, { status: 404 });
+  }
 
   const existing = await prisma.booking.findUnique({
-    where: { id: Number(id) },
+    where: { id: bookingId },
   });
   if (!existing) {
     return NextResponse.json({ error: "Booking not found." }, { status: 404 });
   }
 
-  await prisma.booking.delete({ where: { id: Number(id) } });
+  await prisma.booking.delete({ where: { id: bookingId } });
   return NextResponse.json({ deleted: true });
 }
