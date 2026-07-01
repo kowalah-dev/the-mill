@@ -80,10 +80,10 @@ The nightly loop runs unattended, so its permissions *are* its safety:
   that edits.
 - Save `bypassPermissions` for throwaway containers — never the training repo.
 
-This is the concrete answer to the T3 §3 governance questions: what is each agent
+This is the concrete answer to the Advanced §3 governance questions: what is each agent
 allowed to do unattended, and what must it ask about?
 
 ---
 
-See [T3 §3 — Governance](../t3/README.md) for the questions these settings
+See [Advanced §3 — Govern the fleet](../advanced/README.md) for the questions these settings
 answer, and `/permissions` to inspect the active rules.
