@@ -41,7 +41,7 @@ export default function RootLayout({
             <Link href="/" className="text-lg font-semibold">
               The&nbsp;Mill
               <span className="ml-2 text-sm font-normal text-gray-400">
-                Ashby St Peter
+                Somerset
               </span>
             </Link>
             <nav className="flex gap-1 text-sm">
