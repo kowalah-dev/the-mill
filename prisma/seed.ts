@@ -116,7 +116,7 @@ const bookingPlans: BookingSeed[] = [
   { guestId: 7, roomId: 16, checkIn: addDays(T, 5), checkOut: addDays(T, 8), status: "CONFIRMED" },
   { guestId: 8, roomId: 4, checkIn: addDays(T, 6), checkOut: addDays(T, 7), status: "CONFIRMED" },
 
-  // 5 PENDING — not yet confirmed. These are the input for the Intermediate nightly loop.
+  // 5 PENDING — not yet confirmed. These are the input for the Advanced nightly confirmation job.
   { guestId: 9, roomId: 20, checkIn: addDays(T, 2), checkOut: addDays(T, 4), status: "PENDING" },
   { guestId: 10, roomId: 2, checkIn: addDays(T, 4), checkOut: addDays(T, 6), status: "PENDING", notes: "Awaiting card details." },
   { guestId: 11, roomId: 14, checkIn: addDays(T, 7), checkOut: addDays(T, 10), status: "PENDING" },

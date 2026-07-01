@@ -144,7 +144,7 @@ your level (Beginner, Intermediate or Advanced). Start there.
 | `.claude/skills/babysit/` | A worked-example `/loop` skill (PR shepherd) — study it for the Intermediate level; see `start-here/reference/babysit-example.md` |
 | `.claude/` | `agents/` and `rules/` are empty, ready for exercises; `loop.md` scaffolds the Intermediate loop |
 | `docs/` | `checkout-flow.md` — a stub you'll fill in at the Beginner level |
-| `STATE.md` | Loop state, written by the Intermediate nightly confirmation loop |
+| `STATE.md` | Loop state, written by the Intermediate development loop |
 
 ## Common commands
 

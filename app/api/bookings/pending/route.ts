@@ -4,7 +4,7 @@
  * GET /api/bookings/pending     All PENDING bookings, with guest and room
  *                               details, soonest check-in first.
  *
- * This is the entry point for the Intermediate "nightly confirmation loop": fetch the
+ * This is the entry point for the Advanced nightly confirmation job: fetch the
  * pending bookings here, decide whether each can be confirmed, then PATCH
  * /api/bookings/[id] to update its status.
  */
