@@ -41,14 +41,14 @@ The official marketplace ships more than skills. A few that earn their place on
 - **`typescript-lsp`** *(code intelligence)* — wires up the TypeScript language
   server, so after every edit Claude sees type errors, missing imports, and
   syntax issues automatically and fixes them in the same turn. For a TS repo
-  whose T2 loop is built around a gate, this is the most useful one here. Needs
+  whose Intermediate loop is built around a gate, this is the most useful one here. Needs
   the `typescript-language-server` binary on your `PATH`.
 - **Integration plugins** *(pre-configured MCP servers)* — `github`, `linear`,
   `vercel`, `slack`, `sentry`, `supabase`. These are the off-the-shelf answer to
-  the T1 **MCP wishlist** and the T3 "connect one live" exercise — no manual MCP
+  the Beginner **MCP wishlist** and the Advanced "connect one live" exercise — no manual MCP
   setup.
 - **`security-guidance`** — reviews each change for common vulnerabilities and
-  fixes what it finds in the same session. A ready-made take on the T3 *security
+  fixes what it finds in the same session. A ready-made take on the Advanced *security
   tax*.
 - **`commit-commands`** and **`pr-review-toolkit`** — git/PR workflows; the
   latter pairs naturally with the `/babysit` loop.
@@ -64,7 +64,7 @@ The official marketplace ships more than skills. A few that earn their place on
   repo, recorded in `.claude/settings.json`), or `local` (you, this repo only).
 - **Apply without restarting** — after install/enable/disable, run
   **`/reload-plugins`**.
-- **Share with your squad** — the T3 endgame. Rather than each engineer
+- **Share with your squad** — the Advanced endgame. Rather than each engineer
   installing by hand, commit an `extraKnownMarketplaces` entry to the project's
   `.claude/settings.json`; teammates who trust the repo get prompted to install:
 
