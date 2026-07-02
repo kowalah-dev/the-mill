@@ -3,10 +3,10 @@
 A **hook** is a shell command Claude Code runs automatically at a fixed point in
 its lifecycle. The point of a hook is **determinism**: it *always* runs, instead
 of relying on the model to remember to. That makes hooks the right tool for the
-"enforce a rule" parts of the T2/T3 exercises — the loop's gate, the protected
+"enforce a rule" parts of the Intermediate/Advanced exercises — the loop's gate, the protected
 file — where "usually" isn't good enough.
 
-This is the reference to build from; T2 §Hooks and T3 governance ask you to
+This is the reference to build from; Intermediate §Hooks and Advanced governance ask you to
 *write* one. The authoritative docs are the
 [hooks guide](https://code.claude.com/docs/en/hooks-guide) and the
 [hooks reference](https://code.claude.com/docs/en/hooks).
@@ -56,7 +56,7 @@ Two ways a hook talks back to Claude:
 ## On The Mill
 
 - **Enforce the gate.** A `PostToolUse` hook on `Edit|Write` under `app/api/**`
-  that runs `npm test` (and `npx tsc --noEmit`) — so the T2 loop's gate fires
+  that runs `npm test` (and `npx tsc --noEmit`) — so the Intermediate loop's gate fires
   *deterministically* after every change, not when the agent feels like it.
 - **Protect the schema.** A `PreToolUse` hook matching `prisma/schema.prisma`
   that `exit 2`s with `Blocked: schema changes need a human` — the repo rule from
@@ -77,7 +77,7 @@ hook's `type` can call a model instead of running a command:
   commands) before it decides. **Experimental.**
 
 These are the deterministic-hook idea extended to decisions that need judgment —
-the same maker/checker instinct from T2, fired automatically. Full schemas:
+the same maker/checker instinct from the Intermediate level, fired automatically. Full schemas:
 [prompt-based and agent-based hooks](https://code.claude.com/docs/en/hooks).
 
 ## Before you wire one up

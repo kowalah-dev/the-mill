@@ -85,7 +85,7 @@ When you need to look something up, these are in [`reference/`](reference/):
 - **[Plugins](reference/plugins.md)** — what plugins bundle, the ones worth
   installing for The Mill, and how to share them with your team.
 
-**Automation (T2/T3)**
+**Automation (Intermediate/Advanced)**
 - **[Loop library](reference/loop-examples.md)** — copy-pasteable `/goal`,
   `/loop` and `/schedule` examples adapted to The Mill.
 - **[The babysit loop](reference/babysit-example.md)** — a worked `/loop`
@@ -94,7 +94,7 @@ When you need to look something up, these are in [`reference/`](reference/):
   ways to run agents in parallel: subagents, agent view, agent teams, dynamic
   workflows. *Advanced.*
 
-**Governance & control (T3)**
+**Governance & control (Advanced)**
 - **[Hooks](reference/hooks.md)** — run commands automatically at lifecycle
   events to enforce rules deterministically.
 - **[Permissions & settings](reference/permissions-and-settings.md)** — settings
