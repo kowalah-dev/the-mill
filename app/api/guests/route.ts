@@ -21,9 +21,20 @@ export async function POST(request: Request) {
   }
 
   const { name, email, phone } = body;
-  if (!name || !email) {
+  if (
+    typeof name !== "string" ||
+    !name.trim() ||
+    typeof email !== "string" ||
+    !email.trim()
+  ) {
     return NextResponse.json(
-      { error: "name and email are required." },
+      { error: "name and email are required and must be non-empty strings." },
+      { status: 400 },
+    );
+  }
+  if (phone != null && typeof phone !== "string") {
+    return NextResponse.json(
+      { error: "phone must be a string." },
       { status: 400 },
     );
   }
