@@ -22,16 +22,28 @@ export function BookingActions({
   const router = useRouter();
   const [isPending, startTransition] = useTransition();
   const [busy, setBusy] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   async function setStatus(next: BookingStatus) {
     setBusy(true);
-    await fetch(`/api/bookings/${id}`, {
-      method: "PATCH",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ status: next }),
-    });
-    setBusy(false);
-    startTransition(() => router.refresh());
+    setError(null);
+    try {
+      const res = await fetch(`/api/bookings/${id}`, {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ status: next }),
+      });
+      if (!res.ok) {
+        const data = await res.json().catch(() => null);
+        setError(data?.error ?? `Update failed (${res.status}).`);
+        return;
+      }
+      startTransition(() => router.refresh());
+    } catch {
+      setError("Update failed — check your connection and try again.");
+    } finally {
+      setBusy(false);
+    }
   }
 
   const disabled = busy || isPending;
@@ -39,26 +51,33 @@ export function BookingActions({
   const canCancel = status !== "CANCELLED" && status !== "CHECKED_OUT";
 
   return (
-    <div className="flex justify-end gap-2">
-      {canConfirm && (
-        <Button
-          size="sm"
-          variant="outline"
-          disabled={disabled}
-          onClick={() => setStatus("CONFIRMED")}
-        >
-          Confirm
-        </Button>
-      )}
-      {canCancel && (
-        <Button
-          size="sm"
-          variant="ghost"
-          disabled={disabled}
-          onClick={() => setStatus("CANCELLED")}
-        >
-          Cancel
-        </Button>
+    <div className="flex flex-col items-end gap-1">
+      <div className="flex justify-end gap-2">
+        {canConfirm && (
+          <Button
+            size="sm"
+            variant="outline"
+            disabled={disabled}
+            onClick={() => setStatus("CONFIRMED")}
+          >
+            Confirm
+          </Button>
+        )}
+        {canCancel && (
+          <Button
+            size="sm"
+            variant="ghost"
+            disabled={disabled}
+            onClick={() => setStatus("CANCELLED")}
+          >
+            Cancel
+          </Button>
+        )}
+      </div>
+      {error && (
+        <p role="alert" className="text-right text-xs text-red-600">
+          {error}
+        </p>
       )}
     </div>
   );
